@@ -1,0 +1,85 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block content %}
+
+
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Usuarios</h1>
+    
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <a href="{% url 'registro' %}" class="btn btn-primary btn-sm"><i class="bi bi-plus-lg"></i> Nuevo Usuario</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm" id="tablaUsuarios" width="100%" cellspacing="0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nombre Usuario</th>
+                            <th>Email</th>
+                            <th>Sector</th>
+                            <th >Acción</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                       {% for u in usuarios %}
+                       <tr>
+                        <td>{{u.username}}</td>
+                        <td>{{u.email}}</td>
+                        <td>{{u.groups__name}}</td>
+                        <td class="text-center">
+                            <a class="btn btn-sm btn-primary"  href="{% url 'resetPassword' u.id %}"    role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Reestablece Contraseña"><i class="fas fa-key"></i></a>
+                            <a class="btn btn-sm btn-success ml-1" href="{% url 'editarUsuario' u.id %}" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="fas fa-pencil-alt"></i></a>
+                            
+                            <button class="btn btn-sm btn-danger ml-1" onclick="eliminarUsuario({{u.id}});"    type="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"><i class="fas fa-trash-alt"></i></button>
+                        
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {{mensaje}}
+            </div>
+        </div>
+    </div>
+    
+
+
+
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function() {
+    table("tablaUsuarios");
+    });
+</script>
+
+<script>
+    function eliminarUsuario(pk){
+   
+    Swal.fire({
+            "title": "Eliminar Usuario",
+            "text": "Estas seguro que deasea eliminar el Usuario? ",
+            "icon":"question",
+            "showCancelButton": true,
+            "cancelButtonText":"No, Cancelar",
+            "confirmButtonText":"Si, confirmar",
+            "confirmButtonColor":"#80070F",
+        })
+        .then(function(result){
+            if(result.isConfirmed){
+                
+                window.location.href = "/users/eliminarUsuario/"+pk+""
+            }
+        });
+    }
+</script>
+{% endblock %}
