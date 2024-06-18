@@ -28,7 +28,30 @@
     {% endfor %}
   </div>
 
- 
+  <nav aria-label="Page navigation example" class="mt-2">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="?page=1">Inicio</a>
+          </li>
+        {% if paux.has_previous %}
+      <li class="page-item {% if mascotas.number == 1 %}Disabled{% endif %}">
+        <a class="page-link" href="{% if mascotas.number != 1 %}?page={{ mascotas.previous_page_number }}{% endif %}">Anterior</a>
+      </li>
+      {% endif %}
+     <li class="page-item">
+        <p class="page-link text-danger">Página {{ mascotas.number }} de {{ mascotas.paginator.num_pages }}</p>
+     </li>
+      {% if paux.has_next %}
+      <li class="page-item {% if mascotas.number == mascotas.paginator.num_pages %}Disabled{% endif %}">
+        <a class="page-link" href="{% if mascotas.number != mascotas.paginator.num_pages %}?page={{ mascotas.next_page_number }}{% endif %}">Siguiente</a>
+      </li>
+      {% endif %}
+  
+      <li class="page-item">
+        <a class="page-link" href="?page={{ mascotas.paginator.num_pages }}">Última</a>
+      </li>
+    </ul>
+  </nav>
 
  
  

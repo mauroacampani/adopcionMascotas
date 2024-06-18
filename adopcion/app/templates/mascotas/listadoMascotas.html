@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="card-body">
-          <div class="table-responsive">
-              <table class="table table-bordered table-sm" id="tablaMascotas" width="100%" cellspacing="0">
+          <div class="table-responsive ">
+              <table class="table table-bordered table-striped table-sm" id="tablaMascotas" width="100%" cellspacing="0">
                   <thead>
                       <tr>
                           <th>Nombre</th>
@@ -32,6 +32,7 @@
                           <th>Estado</th>
                           <th>Castrado</th>
                           <th>Caracteristicas</th>
+                         
                           <th>Estado</th>
                       </tr>
                       
@@ -45,9 +46,14 @@
                     <td>{{m.castrado}}</td>
                     <td>{{m.vacuna}}</td>
                     <td>{{m.desparacitado}}</td>
-                    <td>{{m.estado}}</td>
+                    {% if m.estado == "Adoptado" %}
+                    <td><span class="badge bg-success">{{m.estado}}</span></td>
+                    {% else %}
+                    <td><span class="badge bg-warning">{{m.estado}}</span></td>
+                    {% endif %}
                     <td>{{m.castrado}}</td>
                     <td>{{m.caracteristicas}}</td>
+                    
                     <td class="text-center">
                             
                         <a class="btn btn-sm btn-success ml-1" type="button" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
@@ -68,6 +74,7 @@
   
 </div>
 </div>
+
 
  
 

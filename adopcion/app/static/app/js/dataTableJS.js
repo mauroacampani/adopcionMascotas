@@ -56,8 +56,11 @@ function table(tabla){
                 extend: 'print',
                 text: '<i class="bi bi-printer"></i>',
                 titleAttr: 'Exportar a Imprimir',
-                className: 'btn btn-primary btn-sm'
+                className: 'btn btn-primary btn-sm',
+                exportOptions: {
               
+                  columns: 'th:not(:last-child)'
+              }
     
               }
             ]
