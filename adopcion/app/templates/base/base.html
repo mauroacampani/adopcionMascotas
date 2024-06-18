@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Adopcion de Mascotas{% endblock %}</title>
+
+    <!-- Custom fonts for this template-->
+    <!-- <link href="{% static 'app/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">  -->
+
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'app/vendor/jquery/jquery.dataTables.min.css' %}" rel="stylesheet">
+    <link href="{% static 'app/vendor/datatables/responsive.dataTables.min.css' %}" rel="stylesheet">
+    
+
+    <!-- <link href="{% static 'app/vendor/jquery/jquery.dataTables.min.css' %}" rel="stylesheet">
+  
+    <link href="{% static 'app/vendor/datatables/responsive.dataTables.min.css' %}" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{% static 'app/css/main.css' %}">
+    {% block css %}
+   
+    
+    {% endblock %}
+</head>
+
+<body>
+    <header class="container-flud bg-primary d-flex justify-content-center">
+        <p class="text-light mb-0 p-2 fs-6">Contactanos 3571-610102</p>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><span class="text-primary fs-5 fw-bold">Adpocion Mascotas</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listadoMascotas' %}">Mascotas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contacto</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav d-flex">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      {% if user.is_authenticated %}
+                      <span class="mr-2 d-none d-lg-inline small">{{request.user.username}}</span>
+                      <img class="img-profile rounded-circle"
+                          src="#">
+                  </a>
+                  {% endif %}
+                  <ul class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="#">
+                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Perfil
+                      </a> 
+                      <a class="dropdown-item" href="#">
+                          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Cambiar contraseña
+                      </a>
+                      
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Cerrar Sesión
+                      </a>
+                    </ul>
+              <!-- <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul> -->
+            </li>
+              <!-- <li class="nav-item">
+                  <a class="nav-link" href="#">Iniciar Sesion</a>
+                </li> -->
+                <!-- <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {% if user.is_authenticated %}
+                      <span class="mr-2 d-none d-lg-inline small">{{request.user.username}}</span>
+                      <img class="img-profile rounded-circle"
+                          src="#">
+                  </a>
+                  {% endif %}
+                 
+                  <div class="dropdown-menu dropdown-menu-right bg-gray-900 shadow animated--grow-in"
+                      aria-labelledby="userDropdown">
+                      <a class="dropdown-item" href="#">
+                          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Perfil
+                      </a>
+                      <a class="dropdown-item" href="#">
+                          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Cambiar contraseña
+                      </a>
+                      
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                          <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                          Cerrar Sesión
+                      </a>
+                  </div>
+              </li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light p-3" id="menu">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"><span class="text-primary fs-5 fw-bold">Adpocion Mascotas</span></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Registro</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav d-flex">
+              <li class="nav-item dropdown no-arrow">
+                
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {% if user.is_authenticated %}
+                    <span class="mr-2 d-none d-lg-inline small">{{request.user.username}}</span>
+                    <img class="img-profile rounded-circle"
+                        src="#">
+                </a>
+                {% endif %}
+                <div class="dropdown-menu dropdown-menu-right bg-gray-900 shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Perfil
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Cambiar contraseña
+                    </a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Cerrar Sesión
+                    </a>
+                </div>
+                
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav> -->
+      
+      <section class="container-fluid w-75 pt-5">
+
+        {% block content %}
+    
+    
+    
+        {% endblock %}
+
+      </section>
+
+      <footer class="w-100 d-flex align-items justify-content-center flex-wrap">
+        <p class="fs-6 px-3 pt-3">Mauro Campani &copy Todos los Derechos Reservados 2024</p>
+        <div id="iconos">
+            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="#"><i class="bi bi-whatsapp"></i></a>
+            <a href="#"><i class="bi bi-instagram"></i></a>
+        </div>
+    </footer>
+
+<!-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'app/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'app/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'app/js/main.js' %}"></script>
+    <script src="{% static 'app/js/dataTableJS.js' %}"></script>
+
+
+    <script src="{% static 'app/vendor/jquery/js/jquery.dataTables.min.js' %}"></script>
+
+
+    <script src="{% static 'app/datatables/Buttons-2.2.2/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'app/datatables/JSZip-2.5.0/jszip.min.js' %}"></script>
+    <script src="{% static 'app/datatables/pdfmake-0.1.36/pdfmake.min.js' %}"></script>
+    <script src="{% static 'app/datatables/pdfmake-0.1.36/vfs_fonts.js' %}"></script>
+    <script src="{% static 'app/datatables/Buttons-2.2.2/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'app/datatables/Buttons-2.2.2/js/buttons.print.min.js' %}"></script>
+
+    <script type="text/javascript" src="{% static 'app/vendor/datatables/dataTables.responsive.min.js' %}"></script>
+
+
+<!-- SWEETALERT -->
+<script type="text/javascript" src="{% static 'app/vendor/jquery/js/sweetalert.js' %}"></script> 
+
+
+{% if messages %}
+        {% for m in messages %}
+            {% if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <script>
+                Swal.fire({
+      
+                    "text": "{{m}}",
+                    "icon": "success"
+
+                })
+            </script>
+            {% endif %}
+
+            {% if m.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <script>
+                Swal.fire({
+                    "title":"Error",
+                    "text": "{{m}}",
+                    "icon": "error"
+
+                })
+            </script>
+            {% endif %}
+            {% comment %} {% if m.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+            <script>
+                Swal.fire({
+                    "title":"Acción Completada ",
+                    "text": "{{m}}",
+                    "icon": "info"
+
+                })
+            </script>
+            {% endif %} {% endcomment %}
+        {% endfor %}
+    {% endif %}
+
+    {% block js %}
+    
+    
+    
+    {% endblock %}
+</body>
+
+</html>

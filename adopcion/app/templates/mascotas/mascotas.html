@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Adopcion de Mascotas{% endblock %}
+
+  {% block content %}
+
+  <div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for m in mascotas%}
+    <div class="col">
+      <div class="card">
+        <img src="{{m.imagen.url}}" class="card-img-top" height="240px" alt="...">
+        <div class="card-body">
+          <h5 class="card-title text-center">{{m.nombre}}</h5>
+          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">{{m.edad}} años</label>  <br>
+          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">{{m.sexo}}</label>  <br>
+          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">{{m.vacuna}}</label>  <br>
+          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">{{m.desparacitado}}</label>  <br>
+          {% if m.estado == "Adoptado" %}
+          <label class="info" for="">Estado: </label> <span class="badge bg-success">{{m.estado}}</span>  <br>
+          {% else %}
+          <label class="info" for="">Estado: </label> <span class="badge bg-warning">{{m.estado}}</span>  <br>
+          {% endif %}
+          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">{{m.caracteristicas}}</label>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+ 
+
+ 
+ 
+  
+   
+  {% endblock %}    
+
+  {% block js %}    
+
+  {% endblock %}    

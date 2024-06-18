@@ -1,0 +1,36 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    font-family: 'Monsterrat', sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* Menu */
+#menu li > a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #3f3f3f;
+}
+
+.info {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #1b2a4b;
+    min-height: 50px;
+
+}
+
+footer p {
+    color: #f3f3f3;
+}
+
+#icono i{
+    font-size: 26px;
+    padding: 5px 8px;
+    color: #f3f3f3;
+}
