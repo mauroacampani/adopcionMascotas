@@ -1,40 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from mascotas.models import Mascotas
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .forms import formMascotas
 
 # Create your views here.
 @login_required
 def index(request):
 
-    mascotas = Mascotas.objects.all()
-    listaMascotas = []
+    mascotas = Mascotas.objects.all().order_by('estado')
 
-    
-    for m in mascotas:
-        dicDatos={}
-        dicDatos['id'] = m.id
-        dicDatos['nombre'] = m.nombre
-        dicDatos['edad'] = m.edad
-        dicDatos['sexo'] = m.sexo
-        dicDatos['vacuna'] = m.vacuna
-        dicDatos['desparacitado'] = m.desparacitado
-        dicDatos['estado'] = m.estado
-        dicDatos['caracteristicas'] = m.caracteristicas
-        dicDatos['imagen'] = m.imagen
-
-        listaMascotas.append(dicDatos)
     page = request.GET.get('page', 1)
     
-    paginator = Paginator(listaMascotas, 8)  #  paginate_by 5
+    paginator = Paginator(mascotas, 8)  #  paginate_by 5
     try:
-        listaMascotas = paginator.page(page)
+        mascotas = paginator.page(page)
     except PageNotAnInteger:
-        listaMascotas = paginator.page(1)
+        mascotas = paginator.page(1)
     except EmptyPage:
-        listaMascotas = paginator.page(paginator.num_pages)
+        mascotas = paginator.page(paginator.num_pages)
 
-    return render(request, 'mascotas/mascotas.html', {'mascotas':listaMascotas})
+    return render(request, 'mascotas/mascotas.html', {'mascotas':mascotas})
 
 
 
@@ -42,7 +28,7 @@ def index(request):
 @login_required
 def listadoMascotas(request):
 
-    mascotas = Mascotas.objects.all()
+    mascotas = Mascotas.objects.all().order_by('estado')
 
     data = {
         'mascotas': mascotas
@@ -50,3 +36,31 @@ def listadoMascotas(request):
 
 
     return render(request, 'mascotas/listadoMascotas.html', data)
+
+
+
+from django.shortcuts import render
+
+# Create your views here.
+@login_required
+def registroMascotas(request):
+    
+    data = {
+        'form': formMascotas()
+    }
+
+    if request.method == "POST":
+              
+        formulario = formMascotas(request.POST, request.FILES)
+      
+        if formulario.is_valid():
+           
+           
+            
+            formulario.save()
+            # messages.add_message(request, messages.SUCCESS, "Se registró el ingreso del Agente correctamente")
+            return redirect(to='listadoMascotas')
+        else:
+            data["form"] = formulario
+
+    return render(request, 'mascotas/registroMascotas.html', data)

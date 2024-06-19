@@ -14,7 +14,7 @@
       <div class="card-header py-3">
           <div class="row">
           <div class="col-3">
-          <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i> Nuevo Registro</a>
+          <a href="{% url 'registroMascotas' %}" class="btn btn-primary btn-sm"><i class="fas fa-solid fa-plus"></i> Nuevo Registro</a>
         </div>
       
         </div>
@@ -56,9 +56,9 @@
                     
                     <td class="text-center">
                             
-                        <a class="btn btn-sm btn-success ml-1" type="button" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-sm btn-success ms-1" type="button" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
                         
-                        <a class="btn btn-sm btn-danger ml-1"  type="button" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-sm btn-danger ms-1"  type="button" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}

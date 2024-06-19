@@ -19,7 +19,7 @@
           {% if m.estado == "Adoptado" %}
           <label class="info" for="">Estado: </label> <span class="badge bg-success">{{m.estado}}</span>  <br>
           {% else %}
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">{{m.estado}}</span>  <br>
+          <label class="info" for="">Estado: </label><a style="text-decoration: none;" href="https://docs.google.com/forms/d/1udE634945Lhikt8uEowCF2h5CQiwqA0FTP3b-De8rYI/prefill"> <span class="badge bg-warning">{{m.estado}}</span></a>  <br>
           {% endif %}
           <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">{{m.caracteristicas}}</label>
         </div>
