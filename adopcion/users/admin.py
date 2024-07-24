@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mascotas.models import Mascotas
+from users.models import Users
 
 # Register your models here.
-admin.site.register(Mascotas)
+admin.site.register(Users)

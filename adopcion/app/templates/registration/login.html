@@ -25,7 +25,9 @@
 
 <style>
     body {
-    background-image: url(https://source.unsplash.com/featured/1920x1080?nature) !important;
+    /* background-image: url(../../static/app/img/fondo3.png) !important;
+     */
+     background-image: linear-gradient(to left,rgb(83, 83, 250),rgb(161, 212, 247));
 }
 
     #imgFM{
@@ -65,7 +67,7 @@
 
             <div class="col-12 col-md-6">
 
-                <div  class="card border-0 shadow-lg my-5">
+                <div  class="card border-0 shadow-lg my-5 bg-dark">
                     <div class="card-body p-0">
                         <!-- <div class="miDiv"> -->
                         <!-- Nested Row within Card Body -->
@@ -77,12 +79,12 @@
                                     <div class="text-center">
                                         <div class="sidebar-brand-icon">
                                             <!-- <i class="fas fa-laugh-wink"></i> -->
-                                            <img id="imgFM" src="{% static 'app/img/fm.jpg' %}" class="img-fluid" width="90px" height="90px">
+                                            <img id="imgFM" src="{% static 'app/img/logo1.jpeg' %}" class="img-fluid" width="90px" height="90px">
                                         </div>
-                                        <h1 class="h4 text-gray-900 mb-4">Bienvenido!</h1>
+                                        <h1 class="h4 text-white mb-4">Bienvenido!</h1>
                                     </div>
                                     <form class="user" action="" method="POST">
-                                        <div class="form-group">
+                                        <div class="form-group text-white">
                                             {% csrf_token %}
                                             {{ form|crispy }}
                                             

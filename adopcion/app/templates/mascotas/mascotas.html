@@ -3,30 +3,70 @@
 
 {% block title %}Adopcion de Mascotas{% endblock %}
 
+{% block css %}
+<style>
+  .hover-div {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s ease;
+  }
+
+  .hover-div:hover .overlay {
+      opacity: 0.6;
+  }
+</style>
+
+{% endblock %}
   {% block content %}
 
   <div class="row row-cols-1 row-cols-md-4 g-4">
     {% for m in mascotas%}
     <div class="col">
-      <div class="card">
+      <div class="card hover-div">
+        
         <img src="{{m.imagen.url}}" class="card-img-top" height="240px" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">{{m.nombre}}</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">{{m.edad}} años</label>  <br>
+        <div class="card-body ">
+          <h4 class="text-center">{{m.nombre}}</h4>
+          <div>
+            <a role="button" href="{% url 'detalle' m.id %}" class="btn btn-primary overlay"><i class="bi bi-plus-lg" style="font-size: 100px; opacity: 1;"></i></a>
+        </div>
+
+          <!-- <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">{{m.edad}} años</label>  <br>
           <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">{{m.sexo}}</label>  <br>
           <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">{{m.vacuna}}</label>  <br>
           <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">{{m.desparacitado}}</label>  <br>
           {% if m.estado == "Adoptado" %}
           <label class="info" for="">Estado: </label> <span class="badge bg-success">{{m.estado}}</span>  <br>
           {% else %}
-          <label class="info" for="">Estado: </label><a style="text-decoration: none;" href="https://docs.google.com/forms/d/1udE634945Lhikt8uEowCF2h5CQiwqA0FTP3b-De8rYI/prefill"> <span class="badge bg-warning">{{m.estado}}</span></a>  <br>
+          <label class="info" for="">Estado: </label><a style="text-decoration: none;" href="https://docs.google.com/forms/d/e/1FAIpQLScgeIad0O6ItuemAkmzHoeVkOTNQMaETqcFXTB4P1Cm-QMNPQ/viewform?usp=sf_link"> <span class="badge bg-warning">{{m.estado}}</span></a>  <br>
+          <label class="info" for="">Estado: </label><a style="text-decoration: none;" href="{% url 'formulario' %}"> <span class="badge bg-warning">{{m.estado}}</span></a>  <br>
           {% endif %}
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">{{m.caracteristicas}}</label>
+          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">{{m.caracteristicas}}</label> -->
         </div>
+      </a>
       </div>
     </div>
     {% endfor %}
-  </div>
+  </div> <br>
 
   <nav aria-label="Page navigation example" class="mt-2">
     <ul class="pagination justify-content-center">

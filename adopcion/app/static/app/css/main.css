@@ -4,6 +4,9 @@
 body{
     font-family: 'Monsterrat', sans-serif;
     overflow-x: hidden;
+    /* background-image: linear-gradient(to left,rgb(10, 120, 247),rgb(161, 212, 247)); */
+    /* background: linear-gradient(45deg, #2937f0, #9f1ae2) !important; */
+    background: linear-gradient(45deg, #d3d5f8, #b8d3fc) !important;
 }
 
 
@@ -11,7 +14,7 @@ body{
 #menu li > a {
     font-size: 18px;
     font-weight: bold;
-    color: #3f3f3f;
+    color: #f8f3f3;
 }
 
 .info {
@@ -19,7 +22,7 @@ body{
     font-weight: bold;
 }
 
-footer {
+/* footer {
     background-color: #1b2a4b;
     min-height: 50px;
 
@@ -27,7 +30,7 @@ footer {
 
 footer p {
     color: #f3f3f3;
-}
+} */
 
 #icono i{
     font-size: 26px;
@@ -35,6 +38,50 @@ footer p {
     color: #f3f3f3;
 }
 
-.page-link{
+/* .page-link{
     font-size: 12px;
+} */
+
+.pagination .page-link {
+    color: #eff2f5; /* Color de texto */
+    background-color: rgb(64, 150, 248); /* Color de fondo */
+    border: 1px solid rgb(10, 120, 247); 
+    font-size: 13px;
 }
+
+.pagination .page-link:hover {
+    color: #0056b3;
+    background-color: #83bdf7;
+    border-color: rgb(3, 120, 253);
+}
+
+.pagination .page-item.active .page-link {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #0a0a0a;
+}
+
+
+
+.img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
+.footer {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: #2c3e50;
+    color: #fff;
+  }
+  
+  .copyright {
+    background-color: #1a252f;
+  }
