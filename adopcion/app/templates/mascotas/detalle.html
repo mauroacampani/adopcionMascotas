@@ -5,7 +5,7 @@
 {% block css %}
    
     <style>
-      h4{
+      .titulo{
         color:darkblue;
       }
     </style>
@@ -24,18 +24,18 @@
             </div>
 
             <div class="col">
-               <span class="text-center"> <h1>{{m.nombre}}</h1></span><br>
+               <span class="text-center "> <h1>{{m.nombre}}</h1></span><br>
 
-               <span class="text-center"><h4>Edad</h4>
-                <h5>{{m.edad}} Año</h5></span> <br>
+               <span class="text-center"><h4 class="titulo">Edad</h4>
+                <h5>{{m.edad}} Años</h5></span> <br>
 
-                <span class="text-center"><h4>Vacunacion</h4>
+                <span class="text-center"><h4 class="titulo">Vacunacion</h4>
                 <h5>{{m.vacuna}}</h5></span> <br>
 
-                <span class="text-center"><h4>Desparacitado</h4>
+                <span class="text-center"><h4 class="titulo">Desparacitado</h4>
                 <h5>{{m.desparacitado}}</h5></span> <br>
 
-                <span class="text-center"><h4>Caracteristicas</h4>
+                <span class="text-center"><h4 class="titulo">Caracteristicas</h4>
                 <h5>{{m.caracteristicas}}</h5></span> <br> <br>
 
                 <div class="row ">

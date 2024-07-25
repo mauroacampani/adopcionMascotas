@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from mascotas.models import Mascotas
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .forms import formMascotas
 from django.core.mail import send_mail
 from app.forms import FormAdopcion
+from django.contrib import messages
 
 # Create your views here.
 @login_required
@@ -55,10 +56,13 @@ def registroMascotas(request):
         formulario = formMascotas(request.POST, request.FILES)
       
         if formulario.is_valid():
+            post = formulario.save(commit=False)
+            image = formulario.cleaned_data['imagen']
+            resized_image = handle_uploaded_image(image)
+
+            post.imagen = resized_image
            
-           
-            
-            formulario.save()
+            post.save()
             # messages.add_message(request, messages.SUCCESS, "Se registró el ingreso del Agente correctamente")
             return redirect(to='listadoMascotas')
         else:
@@ -129,4 +133,83 @@ def detalle(request, id):
 
 
     return render(request, 'mascotas/detalle.html', data)
+
+
+def editarMascota(request, id):
     
+    try:
+        mascota = get_object_or_404(Mascotas, pk=id)
+        
+    except Mascotas.DoesNotExist:
+        return render(request, 'app/pages-error-404.html')
+    
+    if mascota:
+    
+        data = {
+            
+            'form': formMascotas(instance=mascota)
+        }
+
+        if request.method == "POST":
+            formulario = formMascotas(data=request.POST, instance=mascota)
+
+            
+            if formulario.is_valid():
+                
+                formulario.save()
+                
+                messages.add_message(request, messages.SUCCESS, "Se edito la mascota correctamente")
+                return redirect(to='listadoMascotas')
+            
+            else:
+                data["form"] = formulario
+    else:
+        return render(request, 'app/pages-error-404.html')
+            
+    return render(request, 'mascotas/editarMascota.html', data)
+    
+
+
+def eliminarMascota(request, id):
+
+    # ingreso = get_object_or_404(expedicionQuimica, pk=id)
+    try:
+        masctota = get_object_or_404(Mascotas, pk=id)
+    except Mascotas.DoesNotExist:
+        return render(request, 'app/pages-error-404.html')
+    if masctota:
+        masctota.delete()
+        messages.add_message(request, messages.SUCCESS, "Se eliminó la mascota correctamente")
+        return redirect(to='listadoMascotas')
+    else:
+        return render(request, 'app/pages-error-404.html')
+
+
+from PIL import Image
+import io
+from django.core.files.uploadedfile import InMemoryUploadedFile
+
+
+def handle_uploaded_image(image):
+    img = Image.open(image)
+    img = img.convert('RGB')  # Asegurarse de que esté en formato RGB
+
+    # Redimensionar la imagen
+    max_size = (800, 800)  # Ajusta este tamaño según tus necesidades
+    img.thumbnail(max_size, Image.LANCZOS)
+
+    # Guardar la imagen en memoria
+    img_io = io.BytesIO()
+    img.save(img_io, format='JPEG', quality=85)  # Ajusta la calidad según tus necesidades
+    img_io.seek(0)
+
+    # Crear un archivo InMemoryUploadedFile
+    new_image = InMemoryUploadedFile(
+        img_io, 
+        None, 
+        image.name, 
+        'image/jpeg', 
+        img_io.getbuffer().nbytes, 
+        None
+    )
+    return new_image

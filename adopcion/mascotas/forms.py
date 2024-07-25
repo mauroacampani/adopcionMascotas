@@ -7,3 +7,7 @@ class formMascotas(forms.ModelForm):
         model = Mascotas
         
         fields = '__all__'
+
+        widgets = {
+            'caracteristicas': forms.Textarea(attrs={'class': 'form-control form-control-sm', 'rows': 3, 'id': 'caracteristicas'}),
+        }

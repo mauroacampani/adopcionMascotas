@@ -5,122 +5,22 @@
 
   {% block content %}
 
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-    <div class="col">
-      <div class="card">
-        <img src="{{request.mascotas.get_imagen}}" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Bola de nieve</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">1 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Hembra</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-success">Adoptado</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
+  <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
         </div>
-      </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0">Graphic Artist - Web Designer - Illustrator</p>
     </div>
-  
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/perro1.jpeg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Simon</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">2 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Macho</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-success">Adoptado</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/perro2.jpg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">India</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">3 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Hembra</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/gato2.jpeg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Arya</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">3 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Hembra</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/perro3.jpg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Pompin</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">1 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Hembra</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/gato3.png' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Ramoncito</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">2 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Macho</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-  
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/gato4.jpeg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Freya</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">4 años</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Hembra</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card">
-        <img src="{% static 'app/img/perro4.jpg' %}" height="240px" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title text-center">Gino</h5>
-          <label class="info" for="">Edad: </label> <label style="font-size: 12px;" for="">5</label>  <br>
-          <label class="info" for="">Sexo:</label> <label style="font-size: 12px;" for="">Macho</label>  <br>
-          <label class="info" for="">Vacunacion: </label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Desparacitado:</label> <label style="font-size: 12px;" for="">Si</label>  <br>
-          <label class="info" for="">Estado: </label> <span class="badge bg-warning">En adopcion</span>  <br>
-          <label class="info" for="">Caracteristicas:</label> <label style="font-size: 12px;" for="">Jugueton, mimoso</label>
-      </div>
-    </div>
-  </div>
+</header>
   
    
   {% endblock %}    

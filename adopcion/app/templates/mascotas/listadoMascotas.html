@@ -3,6 +3,14 @@
 
 {% block title %}Listado de Mascotas{% endblock %}
 
+{% block css %}
+<style>
+  table td{
+    font-size: 12px;
+  }
+</style>
+{% endblock %}
+
   {% block content %}
 
   <div class="row">
@@ -56,9 +64,9 @@
                     
                     <td class="text-center">
                             
-                        <a class="btn btn-sm btn-success ms-1" type="button" href="#" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-sm btn-success ms-1" type="button" href="{% url 'editarMascota' m.id %}" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
                         
-                        <a class="btn btn-sm btn-danger ms-1"  type="button" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-sm btn-danger ms-1"  type="button" href="{% url 'eliminarMascota' m.id %}" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
                 {% endfor %}
