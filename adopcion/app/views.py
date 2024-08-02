@@ -1,11 +1,13 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 # from app.forms import FormAdopcion
 # from django.template.loader import render_to_string
 
 
 # # Create your views here.
+def index(request):
 
+    return render(request, 'app/index.html')
 
 
 # @login_required

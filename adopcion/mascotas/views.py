@@ -9,7 +9,7 @@ from django.contrib import messages
 
 # Create your views here.
 @login_required
-def index(request):
+def mascotas(request):
 
     mascotas = Mascotas.objects.all().order_by('estado')
 

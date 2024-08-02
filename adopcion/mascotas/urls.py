@@ -1,9 +1,9 @@
 from django.urls import path
-from mascotas.views import listadoMascotas, registroMascotas, index, formulario, detalle, editarMascota, eliminarMascota
+from mascotas.views import listadoMascotas, registroMascotas, mascotas, formulario, detalle, editarMascota, eliminarMascota
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', index, name="index"),
+    path('mascotas/', mascotas, name="mascotas"),
     path('listadoMascotas/', listadoMascotas, name="listadoMascotas"),
     path('registroMascotas/', registroMascotas, name="registroMascotas"),
     path('formulario/', formulario, name='formulario'),
