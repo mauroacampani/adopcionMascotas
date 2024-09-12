@@ -61,6 +61,18 @@ def registroMascotas(request):
             resized_image = handle_uploaded_image(image)
 
             post.imagen = resized_image
+
+            if formulario.cleaned_data['imagen1']:
+                image = formulario.cleaned_data['imagen1']
+                resized_image = handle_uploaded_image(image)
+
+                post.imagen1 = resized_image
+
+            if formulario.cleaned_data['imagen2']:
+                image = formulario.cleaned_data['imagen2']
+                resized_image = handle_uploaded_image(image)
+
+                post.imagen = resized_image
            
             post.save()
             # messages.add_message(request, messages.SUCCESS, "Se registró el ingreso del Agente correctamente")
@@ -132,6 +144,7 @@ def detalle(request, id):
     }
 
 
+
     return render(request, 'mascotas/detalle.html', data)
 
 
@@ -151,7 +164,7 @@ def editarMascota(request, id):
         }
 
         if request.method == "POST":
-            formulario = formMascotas(data=request.POST, instance=mascota)
+            formulario = formMascotas(data=request.POST, files=request.FILES, instance=mascota)
 
             
             if formulario.is_valid():

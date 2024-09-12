@@ -28,7 +28,9 @@ class Mascotas(models.Model):
     estado = models.CharField(choices=estado, max_length=100)
     castrado = models.CharField(choices=opciones, max_length=50)
     caracteristicas = models.CharField(max_length=150)
-    imagen = models.ImageField(upload_to='mascotas/', null=True, blank=True)
+    imagen = models.ImageField(upload_to='mascotas/')
+    imagen1 = models.ImageField(upload_to='mascotas/', null=True, blank=True)
+    imagen2 = models.ImageField(upload_to='mascotas/', null=True, blank=True)
 
     def get_imagen(self):
         if self.imagen:

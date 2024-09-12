@@ -8,6 +8,17 @@
       .titulo{
         color:darkblue;
       }
+
+      /* .carousel-control-next, .carousel-control-prev {
+color: blue;
+      } */
+
+        .carousel-indicators [data-bs-target] {
+            background-color: blue;
+            width: 50px; /* Ancho del indicador */
+            height: 5px; /* Alto del indicador */
+
+        }
     </style>
 {% endblock %}
   {% block content %}
@@ -18,9 +29,49 @@
   <div class="card">
     <div class="card-body">
         {% for m in mascotas%}
+        
         <div class="row row-cols-1 row-cols-md-2 g-2">
             <div class="col">
-              <img src="{{m.imagen.url}}" class="card-img-top" height="500px" alt="...">
+              <!-- <img src="{{m.imagen.url}}" class="card-img-top" height="500px" alt="..."> -->
+              <div id="carouselExampleIndicators" class="carousel slide">
+                <div class="carousel-indicators">
+                  
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  {% if m.imagen1.url != None %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  {% endif %}
+                  {% if m.imagen2.url != None %}
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  {% endif %}
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{m.imagen.url}}" class="d-block w-100 card-img-top" height="500px" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    {% if m.imagen1.url != None %}
+                    <img src="{{m.imagen1.url}}" class="d-block w-100 card-img-top" height="500px" alt="...">
+                    {% else %}
+                    <img src="" class="d-block w-100 card-img-top" height="500px" alt="...">
+                    {% endif %}
+                  </div>
+                  <div class="carousel-item">
+                    {% if m.imagen2.url != None %}
+                    <img src="{{m.imagen2.url}}" class="d-block w-100 card-img-top" height="500px" alt="...">
+                    {% else %}
+                    <img src="" class="d-block w-100 card-img-top" height="500px" alt="...">
+                    {% endif %}
+                  </div>
+                </div>
+                <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next " type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon " aria-hidden="true"></span>
+                  <span class="visually-hidden text-primary">Next</span>
+                </button> -->
+              </div>
             </div>
 
             <div class="col">
@@ -43,7 +94,7 @@
                   {% if m.estado == "Adoptado" %}
                     <span class="badge bg-success">{{m.estado}}</span>  <br>
                   {% else %}
-                    <a role="button" class="btn btn-sm btn-warning text-white" href="https://docs.google.com/forms/d/e/1FAIpQLScgeIad0O6ItuemAkmzHoeVkOTNQMaETqcFXTB4P1Cm-QMNPQ/viewform?usp=sf_link">{{m.estado}}</a>  <br>
+                    <a role="button" class="btn btn-sm btn-warning text-white" target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScgeIad0O6ItuemAkmzHoeVkOTNQMaETqcFXTB4P1Cm-QMNPQ/viewform?usp=sf_link">{{m.estado}}</a>  <br>
   
                   {% endif %}
                   </div>

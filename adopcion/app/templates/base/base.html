@@ -34,21 +34,44 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{% static 'app/css/main.css' %}">
     {% block css %}
-   
+    <style>
+      /* Ajusta la posición del menú desplegable si es necesario */
+      .dropdown-menu {
+          /* Ajusta el margen izquierdo para evitar que se salga de la pantalla */
+          margin-left: -1rem; /* Ajusta según sea necesario */
+      }
+      
+      /* Opcional: Ajustar el espacio entre el perfil y el menú */
+      .nav-link {
+          padding-right: 1rem; /* Ajusta según sea necesario */
+      }
+
+      .navbar-toggler {
+  border: none; /* Quita el borde, si no es necesario */
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  background-color: #343a40; /* Fondo oscuro, puedes cambiar este color */
+  border-radius: 5px; /* Bordes redondeados opcionales */
+}
+      </style>
     
     {% endblock %}
 </head>
 
 <body>
-    <!-- <header class="container-flud bg-primary d-flex justify-content-center">
-        <p class="text-light mb-0 p-2 fs-6">Contactanos 3571-610102</p>
-    </header> -->
+ 
     <nav class="navbar navbar-expand-lg p-3" id="menu">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}"><span><img src="{% static 'app/img/logo4.jpeg' %}" alt="" width="100" height="100" style="border-radius: 50%;"></span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+  
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            
@@ -74,7 +97,7 @@
                           src="{{request.user.get_imagen}}">
                   </a>
                   {% endif %}
-                  <ul class="dropdown-menu dropdown-menu-left shadow animated--grow-in" aria-labelledby="navbarDropdown">
+                  <ul class="dropdown-menu shadow dropdown-menu-end" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item" href="#">
                           <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                           Perfil
