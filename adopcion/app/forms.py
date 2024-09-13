@@ -23,3 +23,9 @@ class FormAdopcion(forms.Form):
     mascotas = forms.ChoiceField(choices=CHOICES1, widget=forms.RadioSelect(), label='Tiene otras mascotas?')
     tiene_mascotas = forms.CharField(max_length=150, widget=forms.Textarea(), label='En caso de tener mascotas, idique que mascota y cuantas?', required=False)
     
+
+
+class ContactForm(forms.Form):
+    nombre = forms.CharField(max_length=100, required=True)
+    email = forms.EmailField(required=True)
+    mensaje = forms.CharField(widget=forms.Textarea, required=True)

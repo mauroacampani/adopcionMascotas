@@ -12,7 +12,42 @@
 
     <!-- Page Heading -->
     <div class="row ">
-      <h1>Contacto</h1>
+
+        <div class="col-lg-8 offset-md-2" >
+
+            <div class="card ">
+
+                <div class="card-header py-3">
+                    <div class="row text-center">
+                    <div class="col-4 offset-md-4">
+                        <h5 class="card-title">Formulario de Contacto</h5>
+                  </div>
+                
+                  </div>
+                </div>
+                <div class="card-body">
+                    
+          
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-12 col-md-6 offset-md-3">
+                        {% csrf_token %}
+                        {{ form|crispy}}
+                    
+                    
+
+                <div class="d-flex justify-content-end">
+                <button class="btn btn-primary btn-sm" type="submit">Enviar</button>
+                <button class="btn btn-primary btn-sm ms-2 " aria-hidden="true" type="button" onclick="history.back()">Salir</button>
+                
+            </div>
+                </div>
+            </form>
+            {{mensaje}}
+        </div>
+        </div>
+        </div><br>
         </div>
  
 {% endblock %}
