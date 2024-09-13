@@ -36,3 +36,5 @@ def index(request):
 
 # views.py
 
+def contacto(request):
+    return render(request, 'app/contacto.html')
